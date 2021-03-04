@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Panier</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+            <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="card.html" id="cartNav">Panier<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container">
+        <div class="py-5 bg-transparent">
+            <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+            <div class="mt-2 ml-5 text-center">
+                <button type="button" class="btn btn-bg">
+                    Your have <span class="badge badge-light" id="bage"></span>
+                </button>
+            </div>
+        </div>
+        <template id="tempCart">
+            <div class="col-md-8 col-sm-12">
+                <div class="card">
+                    <div id="cartcard">
+                        <div class="imgBox">
+                            <img class="card-img-top " src="..." alt="Card image cap">
+                        </div>
+                        <div class="description_cartcard">
+                            <div class="card-body">
+                                <div class="d-flex mb-3">
+                                    <div class="p-2 card-title"></div>
+                                    <div class="p-2 bg-light price"></div>
+                                </div>
+                                <div class="p-2 bg-light ml-2 color"></div>
+                                <div class="p-2 bg-light quantity"></div>
+
+                                <button type="button" class="btn btn-bg mt-3 btnRemove">Remove Item</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </template>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-group" id="output"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="text-center" id="demo"></div>
+            </div>
+        </div>
+    </section>
+    <footer class="bd-footer p-3 p-md-5 mt-5 text-center  btn-bg">
+        <div class="container">
+            <a href="mailto:marioachil@gmail.com" class="mr-2">&copy;2021 Achille Mario</a>
+            <a href="./pages/mentions.html" class="navbot__link mr-2">Mentions légales</a>
+            <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
+        </div>
+    </footer>
+    <script src="./js/card.js"></script>
+    <script src="js/globalfunction.js"></script>
+</body>
+
+</html>

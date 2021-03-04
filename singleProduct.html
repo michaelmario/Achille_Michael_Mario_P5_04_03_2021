@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Description" content="shopping Teddeies-bear orinoco  the best e-commerce on-line">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+  <title>Teddeies-bear</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+      <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mr-5">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="car.html" id="cartNav">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="py-5 bg-transparent">
+       <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+      <div class="mt-2 ml-5 text-center">
+        <button type="button" class="btn btn-bg">
+            Your have <span class="badge badge-light" id="bage"></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-8" id="tempcontainer">
+        <template id="template">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <span class="price"></span>
+            <p class="card-text"></p>
+            <form action="">              
+                <label for="options"><strong>Choose  the color of your Teddeies-bear</strong></label>
+                <select name="option" id="options">
+                </select>
+                <select name="quantity" id="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+                <input type="button" class="btn btn-success" id="select" value="choose">              
+            </form>
+            <a href="index.html" class="btn btn-bg mt-2">back to shop</a>
+          </div>
+        </template>
+        <div id="card"> </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bd-footer p-3 p-md-5 mt-5 text-center  btn-bg">
+    <div class="container">
+      <a href="mailto:marioachil@gmail.com" class="navbot__link mr-2 mr-4">&copy;2021 Achille Mario</a>
+      <a href="./pages/mentions.html" class="navbot__link mr-2 mr-4">Mentions légales</a>
+      <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
+    </div>
+  </footer> 
+  <script src="./js/singleProduct.js"></script>
+</body>
+</html>
