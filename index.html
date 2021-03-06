@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -16,50 +16,60 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-       <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <div class="bg-light logo">
+        <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"  id="btnCollapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav ml-auto mr-5">
-           <li class="nav-item active">
-             <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
-           </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li>          
-          </ul>
+        <ul class="navbar-nav ml-auto mr-5">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="card.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge badge-pill badge-success" id="badge"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
   <main class="container">
-    <div class="py-5 bg-transparent text-center">
-      <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
-      <div class="mt-2 ml-5 text-center">
-        <button type="button" class="btn btn-bg">
-          Your have <span class="badge badge-light" id="bage"></span>
-        </button>
-      </div>
-      <div class="alert alert-danger alert-dismissible" id="alert">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong id="pre"></strong>
-       </div>
-    </div>
-    <template id="cardTemplate">
-      <div class="col-md-4 col-sm-12">
-        <div class="card">
-          <img class="card-img-top " src="..." alt="Card image cap">
-          <div class="card-body">
-            <h1 class="card-title"></h1>
-            <span id="price"></span>
-            <p class="card-text"></p>
-            <a class="btn btn-bg mt-2"></a>
-          </div>
+    <div class="row">
+      <div class="py-5 col-md-6 bg-transparent text-center"> 
+        <h1>Boutique d'Ours en peluche</h1>
+        </div>
+        <div class="py-5 col-md-6 bg-transparent text-center">
+          <a href="card.html" class="btn btn-bg ml-5">
+           Vous avez  <span class="badge badge-light" id="bage"></span>
+          </a>
+        </div>       
+        <div class="alert alert-danger alert-dismissible" id="alert">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong id="pre"></strong>
         </div>
       </div>
-    </template>
-    <div class="row">
+      <template id="cardTemplate">
+        <div class="col-md-4 col-sm-12">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h1 class="card-title"></h1>
+              <span id="price"></span>
+              <p class="card-text"></p>
+              <a class="btn btn-bg mt-2"></a>
+            </div>
+          </div>
+        </div>
+      </template>
+
       <div class="card-group" id="cards">
       </div>
     </div>
@@ -71,7 +81,6 @@
       <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
     </div>
   </footer>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/globalfunction.js"></script>
 </body>
