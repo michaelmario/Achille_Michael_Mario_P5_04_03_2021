@@ -1,51 +1,123 @@
-/**Afficher les cart de index */
-const displayCards = ((teddie)=> {
-    let cardtemp = document.getElementById('cardTemplate');
-    let copyHtml = cardtemp.content.cloneNode(true);
-    let teddiePrice = teddie.price;
-    let ted = teddiePrice.toString();
-    let regex = /[1-9][^0]/g;
-    let truePrice = [...ted.match(regex)];
-    teddiePrice = truePrice.join();
-    copyHtml.querySelector(".card-img-top").src = teddie.imageUrl;
-    copyHtml.querySelector(".card-title").textContent = teddie.name;
-    copyHtml.querySelector("#price").textContent = `${teddiePrice}.00 € `;
-    copyHtml.querySelector(".card-text").textContent = teddie.description;
-    copyHtml.querySelector("a").href = `singleProduct.html?_id=${teddie._id}`;
-    copyHtml.querySelector("a").textContent = teddie.name;
-    let cards = document.getElementById("cards");
-    cards.classList.add('animate__animated', 'animate__fadeInLeft');
-    cards.appendChild(copyHtml);
-  })
-
-
-/* afficher le button info du panier */
-  const  afficheBage = (()=>{
-    let badgeCart = document.querySelector('#badge');
-     let dataStore = localStorage.length;
-    if(dataStore >= 1){
-      let bage = document.getElementById('bage');
-      bage.textContent = `${dataStore} items dans le chariot`;
-      badgeCart.innerHTML = dataStore;
-      }else{
-      bage.textContent = "0 items dans le chariot";
+class Produit {
+    static getProducts() {
+      fetch('http://localhost:3000/api/teddies/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+  
+      })
+        .then(response => response.json())
+        .then(res => {
+          res.forEach(el => {
+            let data = el;
+            Produit.checkUrl(data);
+          });
+          Produit.displayCart();
+        })
+        .catch((error) => {
+       //  window.location.href = "404.html";
+          console.log("Error:", error);
+        })
+    }
+    static displayCart() {
+      let dataStore = localStorage.length;
+      if (dataStore >= 1) {
+        let bage = document.getElementById('bage');
+        bage.textContent = `${dataStore} items dans le panier`;
+      } else {
+        bage.textContent = "0 item in cart";
+      }
+  
+    }
+    static checkUrl(data) {
+      let url = window.location.search.replace(/^.*?\=/, '');
+        if (data._id === url) {      
+          Produit.createHtml(data);
+        Produit.cartPage(data);
+      }else if(!data._id === url){
+       return error;
+      }
+    }
+    static createHtml(data) {
+      afficheBage();
+      afficheTitle(data);
+      let temp = document.getElementById('template');
+      let copyHtml = temp.content.cloneNode(true);
+  
+      let colors = data.colors;
+      colors.forEach(color => {
+        let option = document.createElement('option');
+        option.textContent = color;
+        option.value = color;
+        copyHtml.querySelector("#options").appendChild(option);
+      })
+  
+      let teddiePrice = data.price;
+      let ted = teddiePrice.toString();
+      let regex = /[1-9][^0]/g;
+      let truePrice = [...ted.match(regex)];
+      
+       teddiePrice = truePrice.join();
+      console.log(teddiePrice);
+      copyHtml.querySelector(".card-img-top").src = data.imageUrl;
+      copyHtml.querySelector(".card-title").textContent = data.name;
+      copyHtml.querySelector(".price").textContent = `${teddiePrice}.00 €`;
+      document.querySelector(".description").textContent = data.description;
+  
+  
+      let card = document.getElementById("card");
+       card.appendChild(copyHtml);
+     
     }
   
-  })
-
-  /* affiché le titre et description de l'article */
-  const afficheTitle =((data)=>{
-  let titile = document.querySelector('.title');
-    titile.classList.add('animate__animated', 'animate__fadeInLeft');
-    titile.innerHTML = `${data.name} <br><small class="text-muted smallText">Peluche fait main<small>`;
-  })
-
-let navbarSupportedContent = document.querySelector('#navbarSupportedContent'); 
-let btnCollapse = document.querySelector('#btnCollapse'); 
-btnCollapse.addEventListener('click',(e)=>{
- e.preventDefault();
- navbarSupportedContent.classList.toggle('control');
-})
-function spaceSupressor(string) {
-    return string.replace(/\s/g, "");
+  
+    static cartPage(data) {
+      let select = document.querySelector('#select'); 
+       let priceString = document.querySelectorAll('.card-body');
+       let priceRel ;
+        priceString.forEach(element => {
+          priceRel = element.children[1].textContent;          
+      }) 
+      priceRel.replace(priceRel, `${priceRel +.00}`);
+      priceRel = parseFloat(priceRel);
+       
+      select.addEventListener('click', (e) => {
+        e.preventDefault();
+        let items = [];
+        let item = {};
+        let colors = data.colors
+        colors.forEach(color => {
+          let choose = document.querySelector('#options').value;
+          let quantity = parseInt(document.querySelector('#quantity').value);   
+          let quantityPrice = (quantity * parseFloat(priceRel)).toFixed(2);
+          
+          if (choose === color) {
+            item = {
+              colors: choose,
+              imageUrl: data.imageUrl,
+              name: data.name,
+              price: quantityPrice,
+              quantity: quantity,
+              _id: data._id
+            }
+  
+            items.push(item);
+            let chooseName = spaceSupressor(`${item.name}${choose}`);
+            localStorage.setItem(chooseName, JSON.stringify(items))
+          }
+  
+        })
+        window.location.href = "card.html";
+      })
+    }
+  
+    
+   
+  
   }
+  
+  document.addEventListener('DOMContentLoaded', Produit.getProducts);
+  
+  
+  
