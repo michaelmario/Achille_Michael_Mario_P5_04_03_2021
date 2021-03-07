@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./css/style.css">
     <title>Panier</title>
 </head>
@@ -14,8 +15,11 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+           <!-- <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>-->
+           <div class="bg-light logo">
+               <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+           </div>
+            <button class="navbar-toggler" type="button" id="btnCollapse" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,58 +29,69 @@
                         <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="card.html" id="cartNav">Panier<span
-                                class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="card.html" id="cartNav">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge badge-pill badge-success" id="badge"></span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
+                    
                 </ul>
             </div>
         </nav>
     </header>
 
-    <section class="container">
-        <div class="py-5 bg-transparent">
-            <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
-            <div class="mt-2 ml-5 text-center">
-                <button type="button" class="btn btn-bg">
-                    Your have <span class="badge badge-light" id="bage"></span>
+    <main class="container">
+        <div class="row">
+            <div class="py-5 col-md-6 bg-transparent text-center"> 
+              <h1>Panier</h1>
+              </div>
+              <div class="py-5 col-md-6 bg-transparent text-center">
+                <button type="button" class="btn btn-bg ml-5">
+                 Vous avez  <span class="badge badge-light" id="bage"></span>
                 </button>
-            </div>
-        </div>
+              </div>
+              <div class="col-md-12 alert alert-danger alert-dismissible" id="alert">
+                <button type="button" class="close text-center" data-dismiss="alert">×</button>
+                <strong id="pre">not good</strong>
+              </div>
         <template id="tempCart">
-            <div class="col-md-8 col-sm-12">
-                <div class="card">
-                    <div id="cartcard">
-                        <div class="imgBox">
-                            <img class="card-img-top " src="..." alt="Card image cap">
-                        </div>
+            <div class="col-md-6 col-sm-12 ">
+                <div class="boxCard">
+                    <div class="cartcard">
+                        <div id="cardImgTop">
+                        <img class="cardImg img-fluid" src="..." alt="Card image cap">  
+                        </div>                      
                         <div class="description_cartcard">
                             <div class="card-body">
-                                <div class="d-flex mb-3">
-                                    <div class="p-2 card-title"></div>
-                                    <div class="p-2 bg-light price"></div>
+                                <div class="d-flex">
+                                    <h3 class="card-title "></h3>
+                                    <h3 class="price ml-auto"></h3>
                                 </div>
-                                <div class="p-2 bg-light ml-2 color"></div>
-                                <div class="p-2 bg-light quantity"></div>
+                                <div class="bg-light">
+                                 <p class="color"></p>
+                                <p class="quantity"></p>
+                                <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
+                            </div>
 
-                                <button type="button" class="btn btn-bg mt-3 btnRemove">Remove Item</button>
+                                
                             </div>
 
                         </div>
                     </div>
                 </div>
         </template>
-        <div class="row">
+       
             <div class="col-md-12">
                 <div class="card-group" id="output"></div>
             </div>
             <div class="col-md-12">
-                <div class="text-center" id="demo"></div>
+                <p class="text-center" id="demo"></p>
             </div>
         </div>
-    </section>
+    </main>
     <footer class="bd-footer p-3 p-md-5 mt-5 text-center  btn-bg">
         <div class="container">
             <a href="mailto:marioachil@gmail.com" class="mr-2">&copy;2021 Achille Mario</a>
@@ -85,7 +100,8 @@
         </div>
     </footer>
     <script src="./js/card.js"></script>
-    <script src="js/globalfunction.js"></script>
+    <script src="./js/globalfunction.js"></script>
+
 </body>
 
 </html>

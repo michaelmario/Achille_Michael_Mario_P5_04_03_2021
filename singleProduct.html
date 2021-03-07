@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Description" content="shopping Teddeies-bear orinoco  the best e-commerce on-line">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
   <title>Teddeies-bear</title>
@@ -17,8 +16,10 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-      <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      <div class="bg-light logo">
+        <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+    </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"  id="btnCollapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,34 +29,34 @@
             <a class="nav-link" href="index.html">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="car.html" id="cartNav">Cart</a>
+            <a class="nav-link" href="card.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge badge-pill badge-success" id="badge"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
   </header>
   <main class="container">
-    <div class="py-5 bg-transparent">
-       <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
-      <div class="mt-2 ml-5 text-center">
-        <button type="button" class="btn btn-bg">
-            Your have <span class="badge badge-light" id="bage"></span>
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-8" id="tempcontainer">
+      <div class="row"> 
+        <div class="col-sm-12 col-md-4 mt-5 text-center">
+           <h1 class="title"></h1>
+          <p class="description"></p>
+         </div>               
+      <div class="col-sm-12 col-md-4 mt-4">
         <template id="template">
-          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="cartcard mt-4">
+          <img class="card-img-top img-fluid" src="..." alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"></h5>
             <span class="price"></span>
             <p class="card-text"></p>
             <form action="">              
-                <label for="options"><strong>Choose  the color of your Teddeies-bear</strong></label>
+                <label for="options"><strong>Choisissez la couleur de votre ourson</strong></label>
+                <br>
                 <select name="option" id="options">
                 </select>
                 <select name="quantity" id="quantity">
@@ -63,13 +64,22 @@
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
-                <input type="button" class="btn btn-success" id="select" value="choose">              
+                <input type="button" class="btn btn-success" id="select" value="Choisir">              
             </form>
-            <a href="index.html" class="btn btn-bg mt-2">back to shop</a>
+            <a href="index.html" class="btn btn-bg mt-2">Retour à la boutique</a>
           </div>
+          </div>
+          </template>
         </template>
         <div id="card"> </div>
+      
       </div>
+      <div class="col-sm-12 col-md-4 mt-5 ml-auto">
+           <a href="card.html" class="btn btn-bg " >
+           Vous avez  <span class="badge badge-light" id="bage"></span>
+          </a>
+        </div>
+      </div>   
     </div>
   </main>
   <footer class="bd-footer p-3 p-md-5 mt-5 text-center  btn-bg">
@@ -80,5 +90,7 @@
     </div>
   </footer> 
   <script src="./js/singleProduct.js"></script>
+  <script src="./js/globalfunction.js"></script>
 </body>
+
 </html>
