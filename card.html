@@ -28,12 +28,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Accueil</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="card.html" id="cartNav">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="badge badge-pill badge-success" id="badge"></span>
-                        </a>
-                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link cartLink" >
+                          <i class="fas fa-shopping-cart"></i>
+                          <span class="badge badge-pill badge-success" id="badge"></span>
+                        </span>
+                      </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
@@ -62,7 +62,7 @@
                 <div class="boxCard">
                     <div class="cartcard">
                         <div id="cardImgTop">
-                        <img class="cardImg img-fluid" src="..." alt="Card image cap">  
+                          <img class="cardImg img-fluid" src="..." alt="Card image cap">  
                         </div>                      
                         <div class="description_cartcard">
                             <div class="card-body">
@@ -70,13 +70,16 @@
                                     <h3 class="card-title "></h3>
                                     <h3 class="price ml-auto"></h3>
                                 </div>
-                                <div class="bg-light">
+                                <div class="bg-light py-2">
                                  <p class="color"></p>
-                                <p class="quantity"></p>
-                                <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
-                            </div>
-
                                 
+                                 <label for="cardQuantity"><strong>Quantités:</strong></label>
+                                 <select name="quantity" class="cardQuantity" id="cardQuantity">
+                                    </select>
+                                    <input type="button" class="btn btn-success selectQuantity" value="Choisir">
+                                     <br>                          
+                                <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
+                            </div>                                
                             </div>
 
                         </div>
@@ -88,7 +91,11 @@
                 <div class="card-group" id="output"></div>
             </div>
             <div class="col-md-12">
-                <p class="text-center" id="demo"></p>
+                <div class="card mt-4">
+                    <div class="card-title py-5">
+                        <div class="text-center ml-auto" id="demo"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

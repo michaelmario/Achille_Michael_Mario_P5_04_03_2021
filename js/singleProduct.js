@@ -16,8 +16,8 @@ class Produit {
           Produit.displayCart();
         })
         .catch((error) => {
-       //  window.location.href = "404.html";
-          console.log("Error:", error);
+         window.location.href = "404.html";
+          console.error("Error:", error);
         })
     }
     static displayCart() {
@@ -57,8 +57,7 @@ class Produit {
       let ted = teddiePrice.toString();
       let regex = /[1-9][^0]/g;
       let truePrice = [...ted.match(regex)];
-      
-       teddiePrice = truePrice.join();
+      teddiePrice = truePrice.join();
       console.log(teddiePrice);
       copyHtml.querySelector(".card-img-top").src = data.imageUrl;
       copyHtml.querySelector(".card-title").textContent = data.name;
@@ -90,21 +89,23 @@ class Produit {
         colors.forEach(color => {
           let choose = document.querySelector('#options').value;
           let quantity = parseInt(document.querySelector('#quantity').value);   
-          let quantityPrice = (quantity * parseFloat(priceRel)).toFixed(2);
-          
+          let quantityPrice = parseFloat(priceRel).toFixed(2);
+          console.log(quantityPrice);
           if (choose === color) {
             item = {
               colors: choose,
               imageUrl: data.imageUrl,
               name: data.name,
               price: quantityPrice,
-              quantity: quantity,
-              _id: data._id
+              _id: data._id,
+              No:quantity
             }
   
             items.push(item);
             let chooseName = spaceSupressor(`${item.name}${choose}`);
-            localStorage.setItem(chooseName, JSON.stringify(items))
+            items = items.concat(JSON.parse(localStorage.getItem('checkItems')||'[]'));
+  
+            localStorage.setItem('checkItems', JSON.stringify(items))
           }
   
         })

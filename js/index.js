@@ -14,9 +14,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
       })
       .catch((error) => {
-        let alert = document.getElementById('alert').style.display = "block";
+        document.getElementById('alert').style.display = "block";
         let errors = document.getElementById('pre');
-        errors.textContent = "We are sorry !!! come back later";
+        errors.classList.add('animate__animated', 'animate__fadeInLeft');
+        errors.textContent = "Nous sommes désolés !!! revenez plus tard";
         console.error('Error:', error);
       });
   

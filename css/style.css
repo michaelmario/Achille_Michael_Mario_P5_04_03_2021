@@ -127,6 +127,9 @@
      background-color: #FFFF66;
      border: 1px solid #F47E58;
  }
+ .mystyle{
+ display: none;
+ }
    @media (max-width:768px){
      .singleImg{
       flex-direction: column;

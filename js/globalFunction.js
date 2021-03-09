@@ -46,6 +46,16 @@ btnCollapse.addEventListener('click',(e)=>{
  e.preventDefault();
  navbarSupportedContent.classList.toggle('control');
 })
+ let cartLink = document.querySelector('.cartLink');
+ cartLink.addEventListener('click',(e)=>{
+  let storedata = localStorage.length;
+  if(storedata >= 1){
+     window.location.href = 'card.html';
+   }else{
+    window.location.href = '404.html';
+
+   }
+ })
 function spaceSupressor(string) {
     return string.replace(/\s/g, "");
   }
