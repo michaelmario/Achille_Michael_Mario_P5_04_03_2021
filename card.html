@@ -53,9 +53,9 @@
                  Vous avez  <span class="badge badge-light" id="bage"></span>
                 </button>
               </div>
-              <div class="col-md-12 alert alert-danger alert-dismissible" id="alert">
+              <div class="col-md-12  alert-danger alert-dismissible py-2" id="alert">
                 <button type="button" class="close text-center" data-dismiss="alert">×</button>
-                <strong id="pre">not good</strong>
+                <strong id="pre"></strong>
               </div>
         <template id="tempCart">
             <div class="col-md-6 col-sm-12 ">
@@ -91,11 +91,49 @@
                 <div class="card-group" id="output"></div>
             </div>
             <div class="col-md-12">
-                <div class="card mt-4">
-                    <div class="card-title py-5">
+                <div class="card mt-4" id="priceLoader">
+                    <div class="card-title py-3">
                         <div class="text-center ml-auto" id="demo"></div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12 text-center">
+            <form class="cartForm" action="../confirmation/index.html" id="confirmation">
+                <h2>Vos informations</h2>
+                <div class="group-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                      </div>
+                      <br>
+                      <div class="col">                      
+                        <input type="text" class="form-control" name="first" id="first" placeholder="John" required="">
+                    </div>
+                    <br>
+                    <div class="col">                                        
+                        <input type="text"  class="form-control" name="last" id="last" placeholder="Doe" required="">
+                     </div>
+                     <br>
+                    <div class="col">                       
+                        <input type="text"  class="form-control" name="adress" id="adress" placeholder="90210 Melrose Avenue" required="">
+                    </div>
+                    <br>
+                    <div class="col">                        
+                        <input type="text" class="form-control" name="city" id="city" placeholder="Los Angeles" required="">
+                    </div>
+                    <br>
+                    <div class="col">                       
+                        <input type="email"  class="form-control" name="email" id="email" placeholder="john.smith@gmail.com" required="">
+                    </div>
+                    <br>
+                    <div class="col">
+                        <p class="product__warning"></p>
+                    </div>
+                    <div class="mainBtn">
+                        <input type="submit" value="BUY" class="mainBtn__btn mainBtn__btn--yellow mainBtn__btn--form">
+                    </div>
+               
+            </div>
+            </form>
             </div>
         </div>
     </main>

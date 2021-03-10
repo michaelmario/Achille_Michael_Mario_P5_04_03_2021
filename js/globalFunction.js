@@ -1,3 +1,10 @@
+
+// AJAX GET
+async function getData(url) {
+  const dataStream = await fetch(url);
+  const data = await dataStream.json();
+  return data;
+}
 /**Afficher les cart de index */
 const displayCards = ((teddie)=> {
     let cardtemp = document.getElementById('cardTemplate');
@@ -29,7 +36,7 @@ const displayCards = ((teddie)=> {
       badgeCart.innerHTML = dataStore;
       }else{
       bage.textContent = "0 items dans le chariot";
-    }
+      }
   
   })
 
