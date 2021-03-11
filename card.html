@@ -15,12 +15,13 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-           <!-- <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>-->
-           <div class="bg-light logo">
-               <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
-           </div>
-            <button class="navbar-toggler" type="button" id="btnCollapse" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>-->
+            <div class="bg-light logo">
+                <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+            </div>
+            <button class="navbar-toggler" type="button" id="btnCollapse" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,61 +30,61 @@
                         <a class="nav-link" href="index.html">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <span class="nav-link cartLink" >
-                          <i class="fas fa-shopping-cart"></i>
-                          <span class="badge badge-pill badge-success" id="badge"></span>
+                        <span class="nav-link cartLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge badge-pill badge-success" id="badge"></span>
                         </span>
-                      </li>
-                 </ul>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <main class="container">
         <div class="row">
-            <div class="py-5 col-md-6 bg-transparent text-center"> 
-              <h1>Panier</h1>
-              </div>
-              <div class="py-5 col-md-6 bg-transparent text-center">
+            <div class="py-5 col-md-6 bg-transparent text-center">
+                <h1>Panier</h1>
+            </div>
+            <div class="py-5 col-md-6 bg-transparent text-center">
                 <button type="button" class="btn btn-bg ml-5">
-                 Vous avez  <span class="badge badge-light" id="bage"></span>
+                    Vous avez <span class="badge badge-light" id="bage"></span>
                 </button>
-              </div>
-              <div class="col-md-12  alert-danger alert-dismissible py-2" id="alert">
+            </div>
+            <div class="col-md-12  alert-danger alert-dismissible py-2" id="alert">
                 <button type="button" class="close text-center" data-dismiss="alert">×</button>
                 <strong id="pre"></strong>
-              </div>
-        <template id="tempCart">
-            <div class="col-md-6 col-sm-12 ">
-                <div class="boxCard">
-                    <div class="cartcard">
-                        <div id="cardImgTop">
-                          <img class="cardImg img-fluid" src="..." alt="Card image cap">  
-                        </div>                      
-                        <div class="description_cartcard">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <h3 class="card-title "></h3>
-                                    <h3 class="price ml-auto"></h3>
-                                </div>
-                                <div class="bg-light py-2">
-                                 <p class="color"></p>
-                                
-                                 <label for="cardQuantity"><strong>Quantités:</strong></label>
-                                 <select name="quantity" class="cardQuantity" id="cardQuantity">
-                                    </select>
-                                    <input type="button" class="btn btn-success selectQuantity" value="Choisir">
-                                     <br>                          
-                                <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
-                            </div>                                
+            </div>
+            <template id="tempCart">
+                <div class="col-md-6 col-sm-12 ">
+                    <div class="boxCard">
+                        <div class="cartcard">
+                            <div id="cardImgTop">
+                                <img class="cardImg img-fluid" src="..." alt="Card image cap">
                             </div>
+                            <div class="description_cartcard">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <h3 class="card-title "></h3>
+                                        <h3 class="price ml-auto"></h3>
+                                    </div>
+                                    <div class="bg-light py-2">
+                                        <p class="color"></p>
 
+                                        <label for="cardQuantity"><strong>Quantités:</strong></label>
+                                        <select name="quantity" class="cardQuantity" id="cardQuantity">
+                                        </select>
+                                        <input type="button" class="btn btn-success selectQuantity" value="Choisir">
+                                        <br>
+                                        <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </template>
-       
+            </template>
+
             <div class="col-md-12">
                 <div class="card-group" id="output"></div>
             </div>
@@ -95,42 +96,47 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-            <form class="cartForm" name="confirmform" onsubmit="return false;" id="confirmform">
-                <h2>Vos informations</h2>
-                <div class="group-row">
-                     <div class="col"> 
-                         <label for="firstName"></label>                     
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" required="" onblur="checkusername(this)">
-                        <span id="firstNamestatus"></span>
-                    </div>                    
-                    <div class="col"> 
-                        <label for="lastName"></label>                                        
-                        <input type="text"  class="form-control" name="lastName" id="lastName" placeholder="Prénom" required="" onblur="checklastName(this)">
-                        <span id="lastNamestatus"></span> 
-                    </div>                    
-                    <div class="col"> 
-                        <label for="adress"></label>                       
-                        <input type="text"  class="form-control" name="adress" id="adress" placeholder="Adresse" required="" onblur="checkadress(this)">
-                        <span id="adressstatus"></span> 
+                <form class="cartForm" name="confirmform" onsubmit="return false;" id="confirmform">
+                    <h2>Vos informations</h2>
+                    <div class="group-row">
+                        <div class="col">
+                            <label for="firstName"></label>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom"
+                                required="" onblur="checkusername(this)">
+                            <span id="firstNamestatus"></span>
+                        </div>
+                        <div class="col">
+                            <label for="lastName"></label>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom"
+                                required="" onblur="checklastName(this)">
+                            <span id="lastNamestatus"></span>
+                        </div>
+                        <div class="col">
+                            <label for="adress"></label>
+                            <input type="text" class="form-control" name="adress" id="adress" placeholder="Adresse"
+                                required="" onblur="checkadress(this)">
+                            <span id="adressstatus"></span>
+                        </div>
+                        <div class="col">
+                            <label for="city"></label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="Ville"
+                                required="" onblur="checkcity(this)">
+                            <span id="citystatus"></span>
+                        </div>
+
+                        <div class="col">
+                            <label for="email"></label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="E-mail"
+                                required="" onblur="checkEmail(this)">
+                            <span id="emailstatus"></span>
+                        </div>
+                        <br>
+                        <div class="mainBtn">
+                            <input type="submit" value="Commander" class="btn btn-success" id="mainSubmit">
+                        </div>
+
                     </div>
-                    <div class="col">
-                        <label for="city"></label>                         
-                        <input type="text" class="form-control" name="city" id="city" placeholder="Ville" required="" onblur="checkcity(this)">
-                        <span id="citystatus"></span>
-                    </div>
-                   
-                    <div class="col"> 
-                        <label for="email"></label>                       
-                        <input type="email"  class="form-control" name="email" id="email" placeholder="E-mail" required="" onblur="checkEmail(this)">
-                        <span id="emailstatus"></span>
-                    </div>
-                    <br>
-                     <div class="mainBtn">
-                        <input type="submit" value="Commander" class="btn btn-success" id="mainSubmit">
-                    </div>
-               
-            </div>
-            </form>
+                </form>
             </div>
         </div>
     </main>

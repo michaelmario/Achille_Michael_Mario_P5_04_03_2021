@@ -1,6 +1,6 @@
 let dataStore = localStorage.length;
 const form = document.querySelector("#confirmform");
-let demo =   document.getElementById("demo");
+let demo = document.getElementById("demo");
 const products = [];
 
 
@@ -69,7 +69,7 @@ function getDataStore() {
 
                 }))
 
-                 /**button pour retire la commande du panier */
+                /**button pour retire la commande du panier */
                 let btnRemove = document.querySelector(`#${keyName}`);
                 btnRemove.addEventListener('click', function (e) {
                     if (localStorage.length >= 1) {
@@ -86,7 +86,7 @@ function getDataStore() {
 
         }
     } else {
-        
+
         document.getElementById("priceLoader").style.display = "none";
         form.style.display = "none";
         let alert = document.getElementById('alert');
@@ -119,7 +119,7 @@ function getPrice() {
         return total += num;
     };
     if (dataStore >= 1) {
-      demo.innerHTML = `<strong class="textSize"> Vous avez un total de  ${prices.reduce(totalPrice)}.00  € </strong>`;
+        demo.innerHTML = `<strong class="textSize"> Vous avez un total de  ${prices.reduce(totalPrice)}.00  € </strong>`;
     }
 }
 const firstNamestatus = document.getElementById("firstNamestatus");
@@ -141,114 +141,114 @@ const email = document.getElementById("email");
 const mainSubmit = document.querySelector('#mainSubmit');
 
 /**check firstName */
-function checkusername(firstName){  	    
-	if(firstName.value != ""){		
-   let test = textRegex.test(firstName.value);
-   
-   if(!test){
-            firstNamestatus.innerHTML ="seul le texte avec l'alphabet est autorisé 🤬";
+function checkusername(firstName) {
+    if (firstName.value != "") {
+        let test = textRegex.test(firstName.value);
+
+        if (!test) {
+            firstNamestatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
             mainSubmit.style.display = "none";
-        }else{ 
-            firstNamestatus.innerHTML ="Bonjour " + firstName.value + ' 👍'; 
+        } else {
+            firstNamestatus.innerHTML = "Bonjour " + firstName.value + ' 👍';
             mainSubmit.style.display = "block";
-            
+
         }
-	
-    } 
+
+    }
 }
 /**check lastName */
-function checklastName(lastName){ 
-    if(lastName.value != ""){
-        let testlast = textRegex.test(lastName.value);		
-         if(!testlast){
-                 lastNamestatus.innerHTML ="seul le texte avec l'alphabet est autorisé 🤬";
-                 mainSubmit.style.display = "none";
-             }else{                
-                 mainSubmit.style.display = "block";
-                 
-             }         
-         } 
-     
+function checklastName(lastName) {
+    if (lastName.value != "") {
+        let testlast = textRegex.test(lastName.value);
+        if (!testlast) {
+            lastNamestatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
+            mainSubmit.style.display = "none";
+        } else {
+            mainSubmit.style.display = "block";
+
+        }
+    }
+
 }
 /**check adress */
-function checkadress(adress){ 
-    if(adress.value != ""){
-        let testadress = adressRegex.test(adress.value);		
-         if(!testadress){
-                 adressstatus.innerHTML ="seul le texte avec l'alphabet est autorisé 🤬";
-                 mainSubmit.style.display = "none";
-             }else{ 
-                 mainSubmit.style.display = "block";
-                 
-             }
-         
-         } 
-     
+function checkadress(adress) {
+    if (adress.value != "") {
+        let testadress = adressRegex.test(adress.value);
+        if (!testadress) {
+            adressstatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
+            mainSubmit.style.display = "none";
+        } else {
+            mainSubmit.style.display = "block";
+
+        }
+
+    }
+
 }
 /**check city  */
-function checkcity(city){ 
-    if(city.value != ""){
-        let testcity = textRegex.test(city.value);		
-         if(!testcity){
-                 citystatus.innerHTML ="seul le texte avec l'alphabet est autorisé 🤬";
-                 mainSubmit.style.display = "none";
-             }else{ 
-                  mainSubmit.style.display = "block";
-                 
-             }
-         
-         } 
-     
+function checkcity(city) {
+    if (city.value != "") {
+        let testcity = textRegex.test(city.value);
+        if (!testcity) {
+            citystatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
+            mainSubmit.style.display = "none";
+        } else {
+            mainSubmit.style.display = "block";
+
+        }
+
+    }
+
 }
 /**check email */
-function checkEmail(email){ 
-    if(email.value != ""){
-        let testemail = emailRegex.test(email.value);		
-         if(!testemail){
-                 emailstatus.innerHTML ="l'adresse e-mail n'est pas formatée correctement  🤬";
-                 mainSubmit.style.display = "none";
-             }else{ 
-                 mainSubmit.style.display = "block";
-                 
-             }
-         
-         } 
-     
+function checkEmail(email) {
+    if (email.value != "") {
+        let testemail = emailRegex.test(email.value);
+        if (!testemail) {
+            emailstatus.innerHTML = "l'adresse e-mail n'est pas formatée correctement  🤬";
+            mainSubmit.style.display = "none";
+        } else {
+            mainSubmit.style.display = "block";
+
+        }
+
+    }
+
 }
 // Listening for submit to POST
-form.addEventListener("submit", function (e) {  
+form.addEventListener("submit", function (e) {
     e.preventDefault();
-    let orderPrice = demo.textContent; 
+    let orderPrice = demo.textContent;
     orderPrice = orderPrice.slice(22);
-    let orders = []; 
+    let orders = [];
     for (let i = 0; i < dataStore; i++) {
         let keyorder = localStorage.key(i);
         keyorder = JSON.parse(localStorage.getItem(keyorder))
         orders.push(keyorder);
-         localStorage.clear();
+        localStorage.clear();
     }
-   
+
     const contact = {
-        firstName :firstName.value,
-        lastName :lastName.value,
-        address:adress.value,
-        city:city.value,
-        email:email.value,
-        orders:orders,
-        orderprice:orderPrice
-      };
-     
-      localStorage.setItem("orders", JSON.stringify(contact));
-      
-      const body = {
-        contact       
-      };
-      postData(
+        firstName: firstName.value,
+        lastName: lastName.value,
+        address: adress.value,
+        city: city.value,
+        email: email.value,
+        orders: orders,
+        orderprice: orderPrice
+    };
+
+    localStorage.setItem("orders", JSON.stringify(contact));
+
+    const body = {
+        contact
+    };
+    postData(
         "http://localhost:3000/api/teddies/order",
         body,
-        );
+    );
 
- console.log(body);
+    console.log(body);
 
 })
 
