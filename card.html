@@ -34,11 +34,7 @@
                           <span class="badge badge-pill badge-success" id="badge"></span>
                         </span>
                       </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
-                    </li>
-                    
-                </ul>
+                 </ul>
             </div>
         </nav>
     </header>
@@ -85,6 +81,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </template>
        
             <div class="col-md-12">
@@ -98,38 +95,38 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-            <form class="cartForm" action="../confirmation/index.html" id="confirmation">
+            <form class="cartForm" name="confirmform" onsubmit="return false;" id="confirmform">
                 <h2>Vos informations</h2>
                 <div class="group-row">
+                     <div class="col"> 
+                         <label for="firstName"></label>                     
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom" required="" onblur="checkusername(this)">
+                        <span id="firstNamestatus"></span>
+                    </div>                    
+                    <div class="col"> 
+                        <label for="lastName"></label>                                        
+                        <input type="text"  class="form-control" name="lastName" id="lastName" placeholder="Prénom" required="" onblur="checklastName(this)">
+                        <span id="lastNamestatus"></span> 
+                    </div>                    
+                    <div class="col"> 
+                        <label for="adress"></label>                       
+                        <input type="text"  class="form-control" name="adress" id="adress" placeholder="Adresse" required="" onblur="checkadress(this)">
+                        <span id="adressstatus"></span> 
+                    </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="First name">
-                      </div>
-                      <br>
-                      <div class="col">                      
-                        <input type="text" class="form-control" name="first" id="first" placeholder="John" required="">
+                        <label for="city"></label>                         
+                        <input type="text" class="form-control" name="city" id="city" placeholder="Ville" required="" onblur="checkcity(this)">
+                        <span id="citystatus"></span>
+                    </div>
+                   
+                    <div class="col"> 
+                        <label for="email"></label>                       
+                        <input type="email"  class="form-control" name="email" id="email" placeholder="E-mail" required="" onblur="checkEmail(this)">
+                        <span id="emailstatus"></span>
                     </div>
                     <br>
-                    <div class="col">                                        
-                        <input type="text"  class="form-control" name="last" id="last" placeholder="Doe" required="">
-                     </div>
-                     <br>
-                    <div class="col">                       
-                        <input type="text"  class="form-control" name="adress" id="adress" placeholder="90210 Melrose Avenue" required="">
-                    </div>
-                    <br>
-                    <div class="col">                        
-                        <input type="text" class="form-control" name="city" id="city" placeholder="Los Angeles" required="">
-                    </div>
-                    <br>
-                    <div class="col">                       
-                        <input type="email"  class="form-control" name="email" id="email" placeholder="john.smith@gmail.com" required="">
-                    </div>
-                    <br>
-                    <div class="col">
-                        <p class="product__warning"></p>
-                    </div>
-                    <div class="mainBtn">
-                        <input type="submit" value="BUY" class="mainBtn__btn mainBtn__btn--yellow mainBtn__btn--form">
+                     <div class="mainBtn">
+                        <input type="submit" value="Commander" class="btn btn-success" id="mainSubmit">
                     </div>
                
             </div>
@@ -144,6 +141,7 @@
             <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
         </div>
     </footer>
+    <!-- ========== SCRIPTS ========== -->
     <script src="./js/card.js"></script>
     <script src="./js/globalFunction.js"></script>
 

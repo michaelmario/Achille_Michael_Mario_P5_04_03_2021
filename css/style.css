@@ -113,22 +113,73 @@
   #output{
     margin-left:17%;
    }
-   input:focus, textarea:focus {
+  /* input:focus, textarea:focus {
      background-color: #FFFF66;
      border: 1px solid #F47E58;
- }
+ }*/
  .cartForm {
   width: 60%;
   margin: 20px auto 0 auto;
   padding: 20px;
   text-align: center;
-  background:linear-gradient(72deg, rgba(199,122,93,1) 24%, rgba(181,111,147,1) 38%, rgba(148,91,130,1) 73%)! important; ;
+  background:linear-gradient(72deg, rgba(199,122,93,1) 24%, rgba(181,111,147,1) 38%, rgba(148,91,130,1) 73%)! important;
   color: #fff;
   box-shadow: 0 0 15px #8a8a8a;
  }
  .textSize{
    font-size: 0.7em;
  }
+ input:focus{
+   background: #8a8a8a;
+ }
+ .hero {
+  padding: 40px 20px;
+  text-align: center;
+  background:linear-gradient(72deg, rgba(199,122,93,1) 24%, rgba(181,111,147,1) 38%, rgba(148,91,130,1) 73%)! important;
+  color:#fff;
+ }
+  .hero.title {
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 35px;
+  }
+
+  .hero.undertitle {
+      font-weight: 300;
+      font-size: 20px;
+  }
+  .greetings {
+    display:flex;
+   
+    margin: 20px auto 0 auto;
+  }
+    @media screen and (max-width:768px) {
+      .greetings {
+        flex-direction: column;
+      }
+    }
+
+    .greetings__infos {
+        padding-right: 20px;
+    }
+
+    .greetings__summary {
+        padding: 30px;
+        border:2px solid #e78200;
+    }
+
+    .greetings.product {
+       flex-direction: space-between;
+        border-bottom: 1px solid ;
+    }
+
+        @media screen and (max-width: 430px) {
+          .greetings {
+            flex-direction: column;
+          }
+        }
+    
+
 
    @media (max-width:768px){
      .singleImg{

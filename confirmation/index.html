@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <title>OrinoBear | Confirmation</title>
+</head>
+<body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+               <div class="bg-light logo">
+                   <img src="../img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
+               </div>
+                <button class="navbar-toggler" type="button" id="btnCollapse" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mr-5">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Accueil</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid">
+            <!-- ========== HERO ========== -->
+            <section class="col-md-4 hero">
+                <h1 class="hero__title">Merci pour vos commandes ✌</h1>
+            </section>
+
+
+            <!-- ========== MAIN ========== -->
+            <main class="greetings mt-5">
+                <div class=" col-md-6 greetings__infos">
+                    <p>
+                        <span class="greetings__name"></span>, Votre commande a été confirmée et nous vous en remercions!
+                    </p>
+                    <p>
+                        Le numéro d'identification de votre commande est <span class="greetings__orderId"></span>.
+                    </p>
+                    <p>Vous recevrez sous peu un e-mail à<span class="greetings__email"></span> contenant les
+                        étapes suivantes et vos informations d'expédition.</p>
+
+                    <p>BYE !</p>
+                </div>
+
+                <div class="col-md-5 greetings__summary">
+                    Order Number : <span class="greetings__orderId"></span>
+                    <div class="greetings__destination"></div>
+                    <div class="greetings__product">
+                        <p>Total</p>
+                        <p>$<span class="greetings__total"></span></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="bd-footer p-3 p-md-5 mt-5 text-center  btn-bg">
+            <div class="container">
+                <a href="mailto:marioachil@gmail.com" class="mr-2">&copy;2021 Achille Mario</a>
+                <a href="./pages/mentions.html" class="navbot__link mr-2">Mentions légales</a>
+                <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
+            </div>
+        </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    
+</body>
+
+</html>
