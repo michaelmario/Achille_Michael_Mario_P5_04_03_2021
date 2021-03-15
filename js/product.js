@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
        createHtml(product);
       cartPage(product);
     } else{
-      throw error;
+     console.log('error');
     }
   }
   /**Afficher la cart Produit */
