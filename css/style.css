@@ -34,7 +34,7 @@
      object-fit: cover;
      border-top-left-radius:15px;
      border-top-right-radius:15px;
-     border-bottom-left-radius:none;    
+    /* border-bottom-left-radius:none;*/    
    }
  
  .cover {
@@ -54,7 +54,6 @@
    .card-img-top {
      border-top-left-radius:15px;
      border-top-right-radius:15px;
-     border-bottom-left-radius:none;  
      object-fit:cover;
      height: 250px;
  
@@ -182,8 +181,7 @@
    
 
     .greetings.product {
-       flex-direction: space-between;
-        border-bottom: 1px solid ;
+      border-bottom: 1px solid ;
     }
 
         @media screen and (max-width: 430px) {
