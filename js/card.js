@@ -1,28 +1,29 @@
 let dataStore = localStorage.length;
 const form = document.querySelector("#confirmform");
 let demo = document.getElementById("demo");
+const productsDestination = document.getElementById("destination");
+let product__warning = document.querySelector(".product__warning");
 const products = [];
 
-
 function getDataStore() {
-    let bage = document.getElementById('bage');
-    bage.textContent = `${dataStore} items dans le chariot`;
     if (dataStore >= 1) {
         for (let i = 0; i < dataStore; i++) {
             let key = localStorage.key(i);
-
             let itemsData = JSON.parse(localStorage.getItem(key));
+           
             /**creation les cartes du  panier  */
             itemsData.forEach(el => {
                 let teddiePrice = el.price * el.No;
                 teddiePrice = parseInt(teddiePrice);
                 let tempCart = document.getElementById('tempCart');
                 let keyName = spaceSupressor(el.name + el.colors);
-                var copyTemp = tempCart.content.cloneNode(true);
+                let copyTemp = tempCart.content.cloneNode(true);
                 copyTemp.querySelector(".cardImg").src = el.imageUrl;
                 copyTemp.querySelector(".card-title").innerHTML = `<strong>${el.name} </strong>`;
-                copyTemp.querySelector(".price").textContent = `${teddiePrice + '.'} 00 € `;
+                copyTemp.querySelector(".price").textContent = `${el.price}  € `;
                 copyTemp.querySelector(".color").innerHTML = `<strong>Couleur : </strong> ${el.colors}`;
+                copyTemp.querySelector(".cardTitle").innerHTML = "<strong>Total</strong>";
+                copyTemp.querySelector(".totalPrice").textContent = `${teddiePrice + '.'} 00 € `;
                 let option = document.createElement('option');
                 option.innerHTML = `${el.No}`;
                 option.value = `${el.No}`;
@@ -55,14 +56,15 @@ function getDataStore() {
 
                     let cardQuantity = el.No;
                     let totalPrice;
-                    let target = targetCart.parentNode.parentNode.firstElementChild.children[1];
+                    let targetTotal = targetCart.parentNode.children[5].children[1];
+
                     if (cardQuantity) {
                         totalPrice = parseInt(el.price * value);
-                        target.innerHTML = `${totalPrice + '.'}00 € `;
-                        console.log(value);
+                        targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
+
                     } else {
                         totalPrice = parseInt(floatprice / value);
-                        target.innerHTML = `${totalPrice + '.'}00 € `;
+                        targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
                     }
                     /* afficher le prix total après modification des commandes  */
                     getPrice();
@@ -78,10 +80,9 @@ function getDataStore() {
                     }
                 })
 
-                /* afficher le button info du panier */
-                afficheBage();
                 /* afficher le prix total en arrivant sur la page */
                 getPrice();
+                afficheBage();
             })
 
         }
@@ -109,11 +110,11 @@ function getPrice() {
     prices = [];
     let priceString = document.querySelectorAll('.card-body');
     priceString.forEach(element => {
-        let priceRel = element.firstElementChild.children[1].textContent;
+        //  let targetTotal = targetCart.parentNode.children[5].children[1];
+        let priceRel = element.children[1].children[5].children[1].textContent;
         priceRel = spaceSupressor(priceRel);
         priceRel.slice(-1);
         prices.push(parseInt(priceRel));
-
     })
     function totalPrice(total, num) {
         return total += num;
@@ -122,133 +123,162 @@ function getPrice() {
         demo.innerHTML = `<strong class="textSize"> Vous avez un total de  ${prices.reduce(totalPrice)}.00  € </strong>`;
     }
 }
+
+
 const firstNamestatus = document.getElementById("firstNamestatus");
 const lastNamestatus = document.getElementById("lastNamestatus");
-const adressstatus = document.getElementById("adressstatus");
+const addresstatus = document.getElementById("addresstatus");
 const citystatus = document.getElementById("citystatus");
 const emailstatus = document.getElementById("emailstatus");
 
-const textRegex = /^[_A-z]*((-|\s)*[_A-z])*$/;
-const adressRegex = /[A-za-z0–9_]\w*$/gi;
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const adressRegex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
 
 
-const firstName = document.getElementById("firstName");
-const lastName = document.getElementById("lastName");
-const city = document.getElementById("city");
-const address = document.getElementById("adress");
-const email = document.getElementById("email");
-const mainSubmit = document.querySelector('#mainSubmit');
-
-/**check firstName */
-function checkusername(firstName) {
-    if (firstName.value != "") {
-        let test = textRegex.test(firstName.value);
-
-        if (!test) {
-            firstNamestatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
-            mainSubmit.style.display = "none";
-        } else {
-            firstNamestatus.innerHTML = "Bonjour " + firstName.value + ' 👍';
-            mainSubmit.style.display = "block";
-
-        }
-
-    }
-}
-/**check lastName */
-function checklastName(lastName) {
-    if (lastName.value != "") {
-        let testlast = textRegex.test(lastName.value);
-        if (!testlast) {
-            lastNamestatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
-            mainSubmit.style.display = "none";
-        } else {
-            mainSubmit.style.display = "block";
-
-        }
-    }
-
-}
-/**check adress */
-function checkadress(adress) {
-    if (adress.value != "") {
-        let testadress = adressRegex.test(adress.value);
-        if (!testadress) {
-            adressstatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
-            mainSubmit.style.display = "none";
-        } else {
-            mainSubmit.style.display = "block";
-
-        }
-
-    }
-
-}
-/**check city  */
-function checkcity(city) {
-    if (city.value != "") {
-        let testcity = textRegex.test(city.value);
-        if (!testcity) {
-            citystatus.innerHTML = "seul le texte avec l'alphabet est autorisé 🤬";
-            mainSubmit.style.display = "none";
-        } else {
-            mainSubmit.style.display = "block";
-
-        }
-
-    }
-
-}
-/**check email */
-function checkEmail(email) {
-    if (email.value != "") {
-        let testemail = emailRegex.test(email.value);
-        if (!testemail) {
-            emailstatus.innerHTML = "l'adresse e-mail n'est pas formatée correctement  🤬";
-            mainSubmit.style.display = "none";
-        } else {
-            mainSubmit.style.display = "block";
-
-        }
-
-    }
-
-}
+const mainSubmit = document.getElementById("mainSubmit");
+let errors = [];
 // Listening for submit to POST
-form.addEventListener("submit", function (e) {
+mainSubmit.addEventListener("click", function (e) {
     e.preventDefault();
-    let orderPrice = demo.textContent;
-    orderPrice = orderPrice.slice(22);
-    let orders = [];
-    for (let i = 0; i < dataStore; i++) {
-        let keyorder = localStorage.key(i);
-        keyorder = JSON.parse(localStorage.getItem(keyorder))
-        orders.push(keyorder);
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let city = document.getElementById("city").value;
+    let address = document.getElementById("adress").value;
+    let email = document.getElementById("email").value;
+
+    if (firstName == '' && lastName == '' && city == '' && address == '' && email == '') {
+        product__warning.classList.add('animate__animated', 'animate__fadeInRight');
+        product__warning.textContent =
+            "Votre prénom, nom et ville ne doivent pas contenir de chiffres. Vos informations ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...";
+    } else {
+        if (errors.length === 0) {
+            let orderPrice = demo.textContent;
+            orderPrice = orderPrice.slice(22);
+            let orders = [];
+            for (let i = 0; i < dataStore; i++) {
+                let keyorder = localStorage.key(i);
+                keyorder = JSON.parse(localStorage.getItem(keyorder))
+                products.push(keyorder);
+                orders.push(keyorder);
+            }
+
+            const contact = {
+                firstName,
+                lastName,
+                address,
+                city,
+                email,
+                orders: orders,
+            };
+            
+            const body = {
+                contact,
+                products
+            };
+            postData(
+                "http://localhost:3000/api/teddies/order",
+                body,
+                orderPrice
+            );
+
+        }
         localStorage.clear();
     }
+});
 
-    const contact = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        address: adress.value,
-        city: city.value,
-        email: email.value,
-        orders: orders,
-        orderprice: orderPrice
-    };
 
-    localStorage.setItem("orders", JSON.stringify(contact));
 
-    const body = {
-        contact
-    };
-    postData(
-        "http://localhost:3000/api/teddies/order",
-        body,
-    );
+function checkusername(input) {
+    let inputValue = input.value;
+    let regex = new RegExp(/[a-zA-z]/gi);
+    Regex = regex.test(inputValue);
+    if (Regex) {
+        mainSubmit.style.display = "block";
+        return errors = [];
+    } else {
+        firstNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
+        mainSubmit.style.display = "none";
+        firstNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        let error = "texte  only";
+        errors.push(error);
 
-    console.log(body);
+    }
 
+}
+
+function checkusermail(email) {
+    let emailValue = email.value;
+    let regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    let emailRegex = regex.test(emailValue);
+    if (emailRegex) {
+        mainSubmit.style.display = "block";
+        return errors = [];
+    } else {
+        emailstatus.innerHTML = "l'adresse e-mail n'est pas formatée correctement  🤬";
+        mainSubmit.style.display = "none";
+        let error = "Email format only";
+        errors.push(error);
+
+    }
+}
+
+function checkaddress(address) {
+    let addressValue = address.value;
+    let regex = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/;
+    let addressRegex = regex.test(addressValue);
+    if (addressRegex) {
+        mainSubmit.style.display = "block";
+        return errors = [];
+    } else {
+        addresstatus.innerHTML = "l'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
+        mainSubmit.style.display = "none";
+        let error = "texte and numerique only";
+        errors.push(error);
+
+    }
+}
+document.getElementById('Refresh').addEventListener('click', function (e) {
+    e.preventDefault();
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let city = document.getElementById("city");
+    let address = document.getElementById("adress");
+    let email = document.getElementById("email");
+    firstName.value = '';
+    lastName.value = '';
+    city.value = '';
+    address.value = '';
+    email.value = '';
+    firstNamestatus.textContent = '';
+    lastNamestatus.innerHTML = '';
+    citystatus.innerHTML = '';
+    emailstatus.innerHTML = '';
+    addresstatus.innerHTML = '';
+    product__warning.textContent = '';
+    mainSubmit.style.display = "block";
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

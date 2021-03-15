@@ -1,6 +1,10 @@
-// Check for full page load before doing anything
+// Vérifiez le chargement de la page complète avant de faire quoi que ce soit
 window.addEventListener('DOMContentLoaded', (event) => {
-  // Fetching product
+
+  /** affiche la quantité de produit dans le panier */
+  afficheBage();
+
+  /**Récupération du produit */ 
   const data = getData("http://localhost:3000/api/teddies/");
 
   if (!data) return;
@@ -12,22 +16,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
   })
 
-
+  /**Vérifier si l'URL correspond à l'ID*/
   function checkUrl(product) {
     let url = window.location.search.replace(/^.*?\=/, '');
     if (product._id === url) {
-      createHtml(product);
+       createHtml(product);
       cartPage(product);
-    } else if (!product._id === url) {
-      return error;
+    } else{
+      throw error;
     }
   }
+  /**Afficher la cart Produit */
   function createHtml(product) {
-    afficheBage();
     afficheTitle(product);
     let temp = document.getElementById('template');
     let copyHtml = temp.content.cloneNode(true);
-
+     /** création l'option couleurs */
     let colors = product.colors;
     colors.forEach(color => {
       let option = document.createElement('option');
@@ -41,7 +45,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let regex = /[1-9][^0]/g;
     let truePrice = [...ted.match(regex)];
     teddiePrice = truePrice.join();
-    console.log(teddiePrice);
+   
     copyHtml.querySelector(".card-img-top").src = product.imageUrl;
     copyHtml.querySelector(".card-title").textContent = product.name;
     copyHtml.querySelector(".price").textContent = `${teddiePrice}.00 €`;
@@ -53,7 +57,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   }
 
-
+  /** sélectionnez les options et envoyez à localstorage */
   function cartPage(product) {
     let select = document.querySelector('#select');
     let priceString = document.querySelectorAll('.card-body');
@@ -70,7 +74,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       let item = {};
       let colors = product.colors
       colors.forEach(color => {
-
         let choose = document.querySelector('#options').value;
         let quantity = parseInt(document.querySelector('#quantity').value);
         let quantityPrice = parseFloat(priceRel).toFixed(2);
@@ -93,6 +96,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
 
       })
+      /** Aller à la page panier*/
       window.location.href = "card.html";
     })
   }

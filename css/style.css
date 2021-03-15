@@ -1,6 +1,9 @@
 .navbar {
     padding-left: 10px;
  }
+ .cartLink{
+ cursor: pointer;
+ }
  .logo img{
    height:40px;
  }
@@ -9,12 +12,7 @@
    color:#fff !important;
  
  }
- .indigo{
-   color:#ae56ff;
- }
- .brown{
-   color:#e78200;
- }
+ 
  .card{
      margin-bottom: 20px;
      border:1px solid #e78200;
@@ -113,10 +111,14 @@
   #output{
     margin-left:17%;
    }
-  /* input:focus, textarea:focus {
-     background-color: #FFFF66;
-     border: 1px solid #F47E58;
- }*/
+   .totalPrice {
+    font-weight: bolder;
+    /*line-height: 2;*/
+    font-size: 1rem;
+    border:1px solid #e78200;
+    padding:5px;
+}
+  
  .cartForm {
   width: 60%;
   margin: 20px auto 0 auto;
@@ -132,6 +134,7 @@
  input:focus{
    background: #8a8a8a;
  }
+ 
  .hero {
   padding: 40px 20px;
   text-align: center;
@@ -149,10 +152,23 @@
       font-size: 20px;
   }
   .greetings {
-    display:flex;
-   
+    display:flex;   
     margin: 20px auto 0 auto;
-  }
+  } 
+  .ordersSummary {
+        padding: 10px;
+        border:2px solid #e78200;
+    }
+    #badGateWay{
+     width:100%;  
+    height:100vh;
+    text-align: center;
+    }
+    #badGateWay img{
+      width:90%;
+      height: auto;
+     
+    }
     @media screen and (max-width:768px) {
       .greetings {
         flex-direction: column;
@@ -163,10 +179,7 @@
         padding-right: 20px;
     }
 
-    .greetings__summary {
-        padding: 30px;
-        border:2px solid #e78200;
-    }
+   
 
     .greetings.product {
        flex-direction: space-between;

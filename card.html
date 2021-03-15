@@ -15,7 +15,6 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            <!-- <h1 class="text-light"><span class="brown">Orin</span><span class="indigo">oco</span></h1>-->
             <div class="bg-light logo">
                 <img src="img/logo_orinoco.png" class="img-fluid" alt="Logo du site" />
             </div>
@@ -45,11 +44,7 @@
             <div class="py-5 col-md-6 bg-transparent text-center">
                 <h1>Panier</h1>
             </div>
-            <div class="py-5 col-md-6 bg-transparent text-center">
-                <button type="button" class="btn btn-bg ml-5">
-                    Vous avez <span class="badge badge-light" id="bage"></span>
-                </button>
-            </div>
+            <div id="destination"></div>
             <div class="col-md-12  alert-danger alert-dismissible py-2" id="alert">
                 <button type="button" class="close text-center" data-dismiss="alert">×</button>
                 <strong id="pre"></strong>
@@ -75,6 +70,10 @@
                                         </select>
                                         <input type="button" class="btn btn-success selectQuantity" value="Choisir">
                                         <br>
+                                        <div class="d-flex mt-4">
+                                            <h5 class="cardTitle"></h5>
+                                            <h5 class="totalPrice ml-auto"></h5>
+                                        </div>
                                         <button type="button" class="btn btn-bg mt-3 btnRemove">Retirer l'objet</button>
                                     </div>
                                 </div>
@@ -96,45 +95,52 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <form class="cartForm" name="confirmform" onsubmit="return false;" id="confirmform">
+                <form class="cartForm" name="confirmform" id="confirmform">
                     <h2>Vos informations</h2>
                     <div class="group-row">
                         <div class="col">
                             <label for="firstName"></label>
                             <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Nom"
-                                required="" onblur="checkusername(this)">
+                                onkeyup="checkusername(this)" minlength="5" required>
                             <span id="firstNamestatus"></span>
                         </div>
                         <div class="col">
                             <label for="lastName"></label>
                             <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Prénom"
-                                required="" onblur="checklastName(this)">
+                                onkeyup="checkusername(this)" minlength="5" required>
                             <span id="lastNamestatus"></span>
                         </div>
                         <div class="col">
                             <label for="adress"></label>
                             <input type="text" class="form-control" name="adress" id="adress" placeholder="Adresse"
-                                required="" onblur="checkadress(this)">
-                            <span id="adressstatus"></span>
+                                onkeyup="checkaddress(this)" maxlength="40" required>
+                            <span id="addresstatus"></span>
                         </div>
                         <div class="col">
                             <label for="city"></label>
                             <input type="text" class="form-control" name="city" id="city" placeholder="Ville"
-                                required="" onblur="checkcity(this)">
+                                onkeyup="checkusername(this)" minlength="5" required>
                             <span id="citystatus"></span>
                         </div>
 
                         <div class="col">
                             <label for="email"></label>
                             <input type="email" class="form-control" name="email" id="email" placeholder="E-mail"
-                                required="" onblur="checkEmail(this)">
+                                onkeyup="checkusermail(this)" required>
                             <span id="emailstatus"></span>
                         </div>
-                        <br>
-                        <div class="mainBtn">
+                        <div class="col mt-2">
+                            <div class="product__warning"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 col-sm-12 mt-2">
                             <input type="submit" value="Commander" class="btn btn-success" id="mainSubmit">
                         </div>
-
+                        <div class="col-md-6 col-sm-12 mt-2">
+                            <button class="btn btn-primary" id="Refresh"><i class="fas fa-sync-alt"></i>
+                                Réinitialiser</button>
+                        </div>
                     </div>
                 </form>
             </div>
