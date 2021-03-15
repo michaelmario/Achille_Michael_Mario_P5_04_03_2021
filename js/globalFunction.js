@@ -60,7 +60,7 @@ async function postData(url, data, total) {
       // Storing total price in localStorage
       localStorage.setItem("price", total.toString());
       // Redirecting to geetings page
-      window.location.replace("../confirmation/index.html");
+      window.location.href = "confirm.html";
     })
     .catch(err => console.error(err))
 }
