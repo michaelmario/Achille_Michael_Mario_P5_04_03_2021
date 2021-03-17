@@ -4,6 +4,9 @@
  .cartLink{
  cursor: pointer;
  }
+ .badge{
+   position:absolute;
+ }
  .logo img{
    height:40px;
  }
@@ -34,7 +37,7 @@
      object-fit: cover;
      border-top-left-radius:15px;
      border-top-right-radius:15px;
-    /* border-bottom-left-radius:none;*/    
+    
    }
  
  .cover {

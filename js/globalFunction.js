@@ -6,11 +6,13 @@ async function getData(url) {
   return data;
 }
 /* afficher le button info du panier */
-const afficheBage = (() => {
+const afficheBadge = (() => {
   let badgeCart = document.querySelector('#badge');
   let dataStore = localStorage.length;
   if (dataStore >= 1) {
     badgeCart.innerHTML = dataStore;
+  }else{
+    badgeCart.innerHTML = "0";
   }
 
 })

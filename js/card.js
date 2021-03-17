@@ -106,11 +106,12 @@ function getDataStore() {
 
 document.addEventListener('DOMContentLoaded', getDataStore);
 
+
+//obtenir tous les prix du corps de la carte, convertir en entier, mettre dans un tableau, les additionnée
 function getPrice() {
     prices = [];
     let priceString = document.querySelectorAll('.card-body');
-    priceString.forEach(element => {
-        //  let targetTotal = targetCart.parentNode.children[5].children[1];
+    priceString.forEach(element => {       
         let priceRel = element.children[1].children[5].children[1].textContent;
         priceRel = spaceSupressor(priceRel);
         priceRel.slice(-1);

@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }); 
 
   /** Affiche la quantité de produit dans le panier */
-  afficheBage(); 
+  afficheBadge(); 
 });
 
 /**Afficher les cart de index */

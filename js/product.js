@@ -2,7 +2,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
   /** affiche la quantité de produit dans le panier */
-  afficheBage();
+  afficheBadge();
 
   /**Récupération du produit */ 
   const data = getData("http://localhost:3000/api/teddies/");
@@ -77,8 +77,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let choose = document.querySelector('#options').value;
         let quantity = parseInt(document.querySelector('#quantity').value);
         let quantityPrice = parseFloat(priceRel).toFixed(2);
-        console.log(quantityPrice);
-        if (choose === color) {
+         if (choose === color) {
           item = {
             colors: choose,
             imageUrl: product.imageUrl,

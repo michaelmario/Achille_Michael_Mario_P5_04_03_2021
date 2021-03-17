@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         let ordersContact = orderData.contact.orders;
         let productData = orderData.products;
         let serialNo = orderData.orderId;
-      
+
         ordersContact.map(el => {
             for (let i = 0; i < el.length; i++) {
                 let cartel = el[i];
@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 noProducts.textContent = cartel.No;
                 nameProducts.textContent = cartel.name;
                 colorsProducts.textContent = cartel.colors;
-                priceProducts.innerHTML = `<strong>${cartelPrice +'.'}00 € </strong>`;
+                priceProducts.innerHTML = `<strong>${cartelPrice + '.'}00 € </strong>`;
                 tr.appendChild(noProducts);
                 tr.appendChild(nameProducts);
                 tr.appendChild(colorsProducts);
@@ -46,12 +46,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
         })
-        let pricetr = document.createElement('tr');       
+        let pricetr = document.createElement('tr');
         let tdp1 = document.createElement('td');
         tdp1.innerHTML = "<strong>Total</strong>";
         let tdp2 = document.createElement('td');
         let tdp3 = document.createElement('td');
-         let tdprice = document.createElement('td');
+        let tdprice = document.createElement('td');
         tdprice.innerHTML = `<strong>${orderprice}</strong>`;
         pricetr.appendChild(tdp1);
         pricetr.appendChild(tdp2);
@@ -59,16 +59,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
         pricetr.appendChild(tdprice);
         product.appendChild(pricetr);
 
-        
+
         username.innerHTML = `<strong>${contactData.firstName}</strong>`;
         orderId.innerHTML = `<strong>${serialNo}</strong>`;
         summeryOrderId.innerHTML = `<strong>${serialNo}</strong>`;
         useremail.innerHTML = `<strong>${contactData.email}</strong>`;
         destination.innerHTML = `<strong>${contactData.address}</strong>`;
 
-        localStorage.clear();
-
     }
-
+    localStorage.clear();
 
 });
