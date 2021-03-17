@@ -82,7 +82,7 @@ function getDataStore() {
 
                 /* afficher le prix total en arrivant sur la page */
                 getPrice();
-                afficheBage();
+                afficheBadge();
             })
 
         }
