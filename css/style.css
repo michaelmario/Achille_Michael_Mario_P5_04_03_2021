@@ -16,6 +16,9 @@
  
  }
  
+ main{
+  min-height:100vh;
+ }
  .card{
      margin-bottom: 20px;
      border:1px solid #e78200;
@@ -160,6 +163,7 @@
   .ordersSummary {
         padding: 10px;
         border:2px solid #e78200;
+        height:auto;
     }
     #badGateWay{
      width:100%;  

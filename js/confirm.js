@@ -65,6 +65,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         summeryOrderId.innerHTML = `<strong>${serialNo}</strong>`;
         useremail.innerHTML = `<strong>${contactData.email}</strong>`;
         destination.innerHTML = `<strong>${contactData.address}</strong>`;
+        
 
     }
     localStorage.clear();

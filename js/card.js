@@ -148,9 +148,17 @@ mainSubmit.addEventListener("click", function (e) {
     let email = document.getElementById("email").value;
 
     if (firstName == '' && lastName == '' && city == '' && address == '' && email == '') {
-        product__warning.classList.add('animate__animated', 'animate__fadeInRight');
-        product__warning.textContent =
-            "Votre prénom, nom et ville ne doivent pas contenir de chiffres. Vos informations ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...";
+        firstNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
+        firstNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        lastNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
+        lastNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        citystatus.classList.add('animate__animated', 'animate__fadeInRight');
+        citystatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        emailstatus.classList.add('animate__animated', 'animate__fadeInRight');
+        emailstatus.textContent = "l'adresse e-mail n'est pas formatée correctement  🤬";
+        addresstatus.classList.add('animate__animated', 'animate__fadeInRight');
+        addresstatus.textContent = "l'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
+      
     } else {
         if (errors.length === 0) {
             let orderPrice = demo.textContent;
@@ -233,8 +241,9 @@ function checkaddress(address) {
     } else {
         addresstatus.innerHTML = "l'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
         mainSubmit.style.display = "none";
-        let error = "texte and numerique only";
+        let error = "alphanumérique uniquement";
         errors.push(error);
+
 
     }
 }
