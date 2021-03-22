@@ -42,7 +42,7 @@ const displayCards = ((teddie) => {
   copyHtml.querySelector(".card-title").textContent = teddie.name;
   copyHtml.querySelector("#price").textContent = `${teddiePrice}.00 € `;
   copyHtml.querySelector(".card-text").textContent = teddie.description;
-  copyHtml.querySelector("a").href = `singleProduct.html?_id=${teddie._id}`;
+  copyHtml.querySelector("a").href = `./pages/singleProduct.html?_id=${teddie._id}`;
   copyHtml.querySelector("a").textContent = teddie.name;
   let cards = document.getElementById("cards");
   cards.classList.add('animate__animated', 'animate__fadeInLeft');

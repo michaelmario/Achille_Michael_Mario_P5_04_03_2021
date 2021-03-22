@@ -34,10 +34,11 @@ btnCollapse.addEventListener('click', (e) => {
 let cartLink = document.querySelector('.cartLink');
 cartLink.addEventListener('click', (e) => {
   let storedata = localStorage.length;
-  if (storedata >= 1) {
-    window.location.href = 'card.html';
+  if (storedata >= 1) {    
+      window.location.href = '/pages/card.html';    
+   
   } else {
-    window.location.href = '404.html';
+    window.location.href = './pages/404.html';
 
   }
 })
