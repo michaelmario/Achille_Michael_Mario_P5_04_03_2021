@@ -15,19 +15,24 @@ async function postData(url, data, total) {
       'Content-type': 'application/json'
     })
   }
-  return fetch(url, options)
-    .then(response => response.json())
-    .then(data => {
-      // Stocks data in localStorage key as orderRecap
-      localStorage.setItem("orderRecap", JSON.stringify(data));
-      // Storing total price in localStorage
-      localStorage.setItem("price", total.toString());
-      // Redirecting to confirm page
-      window.location.href = "confirm.html";
-    })
-    .catch(err => console.error(err))
+  const postStream = await fetch(url, options);
+  const postData = await postStream.json();
+  return new Promise((resolve )=> {
+    setTimeout(()=>{
+    resolve(
+    // Stocks data in localStorage key as orderRecap
+    localStorage.setItem("orderRecap", JSON.stringify(postData)),
+    // Storing total price in localStorage
+    localStorage.setItem("price", total.toString()),
+    // Redirecting to confirm page
+    window.location.href = "confirm.html"
+    );
+    },1000);   
+   
+  }).catch(err => console.log(err));
+  
 }
-
+ 
 
 /* afficher le button info du panier */
 const afficheBadge = (() => {
@@ -55,6 +60,7 @@ btnCollapse.addEventListener('click', (e) => {
   e.preventDefault();
   navbarSupportedContent.classList.toggle('control');
 })
+
 //bouton de navigation vers le panier
 let cartLink = document.querySelector('.cartLink');
 cartLink.addEventListener('click', (e) => {
@@ -67,6 +73,7 @@ cartLink.addEventListener('click', (e) => {
 
   }
 })
+// fonction pour enlever l'espace entre le mots
 function spaceSupressor(string) {
   return string.replace(/\s/g, "");
 }
