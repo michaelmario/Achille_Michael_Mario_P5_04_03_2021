@@ -13,24 +13,29 @@ window.addEventListener('DOMContentLoaded', (event) => {
     res.forEach(el => {
       let product = el;
       checkUrl(product);
+        });
     })
-  })
+ 
 
   /**Vérifier si l'URL correspond à l'ID*/
   function checkUrl(product) {
-    let url = window.location.search.replace(/^.*?\=/, '');
-    if (product._id === url) {
+    let url = window.location.search;
+    const sliceId = url.split('=')[1];  
+    if(product._id === sliceId){
        createHtml(product);
       cartPage(product);
-    } else{
-     console.log('error');
-    }
+     }else{
+       console.log('Does not match the id');
+     } 
+  
   }
+
   /**Afficher la cart Produit */
   function createHtml(product) {
     afficheTitle(product);
     let temp = document.getElementById('template');
     let copyHtml = temp.content.cloneNode(true);
+
      /** création l'option couleurs */
     let colors = product.colors;
     colors.forEach(color => {
@@ -39,6 +44,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       option.value = color;
       copyHtml.querySelector("#options").appendChild(option);
     })
+
 
     let teddiePrice = product.price;
     let ted = teddiePrice.toString();
@@ -94,7 +100,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         }
 
-      })
+      });
+
       /** Aller à la page panier*/
       window.location.href = "card.html";
     })

@@ -15,6 +15,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       localStorage.removeItem('price');
       
     }
+  }).then(()=>{
+    /** Affiche la quantité de produit dans le panier */
+  afficheBadge(); 
   })
   /**Afficher les erreurs si le serveur n'est pas disponible */
   .catch((error) => {
@@ -25,8 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.error('Error:', error);
   }); 
 
-  /** Affiche la quantité de produit dans le panier */
-  afficheBadge(); 
+  
 });
 
 /**Afficher les cart de index */
