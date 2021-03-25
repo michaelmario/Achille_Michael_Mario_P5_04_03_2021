@@ -98,6 +98,8 @@ function getDataStore() {
                     if (dataStore >= 1) {
                         localStorage.removeItem(e.target.id);
                         window.location.reload();
+                    }else{
+                        window.location.href="../index.html"
                     }
                 })
 
