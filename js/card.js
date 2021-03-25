@@ -1,4 +1,4 @@
-let dataStore = localStorage.length;
+
 const form = document.querySelector("#confirmform");
 let demo = document.getElementById("demo");
 const productsDestination = document.getElementById("destination");
@@ -10,7 +10,7 @@ function getDataStore() {
         for (let i = 0; i < dataStore; i++) {
             let key = localStorage.key(i);
             let itemsData = JSON.parse(localStorage.getItem(key));
-           
+
             /**creation les cartes du  panier  */
             itemsData.forEach(el => {
                 let teddiePrice = el.price * el.No;
@@ -62,19 +62,40 @@ function getDataStore() {
                         totalPrice = parseInt(el.price * value);
                         targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
 
-                    } else {
+                    }
+                      else {
                         totalPrice = parseInt(floatprice / value);
                         targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
                     }
+                    let newitem;
+                    var addToLocalStorageArray = function (name, value) {
+                         let newobjct = [] ;
+                        // Get the existing data
+                          localStorage.removeItem(name); 
+                         newobjct.push(value);
+                                              // Save back to localStorage
+                        localStorage.setItem(name, JSON.stringify(newobjct));
+
+                    };
                     /* afficher le prix total après modification des commandes  */
                     getPrice();
+                    newitem = {
+                        No:value,
+                        colors: el.colors,
+                        imageUrl: el.imageUrl,
+                        name: el.name,
+                        price: el.price,
+                        _id: el._id
+                    };
+                    addToLocalStorageArray(`${keyName}`, newitem);
+                    
 
                 }))
 
                 /**button pour retire la commande du panier */
                 let btnRemove = document.querySelector(`#${keyName}`);
                 btnRemove.addEventListener('click', function (e) {
-                    if (localStorage.length >= 1) {
+                    if (dataStore >= 1) {
                         localStorage.removeItem(e.target.id);
                         window.location.reload();
                     }
@@ -111,7 +132,7 @@ document.addEventListener('DOMContentLoaded', getDataStore);
 function getPrice() {
     prices = [];
     let priceString = document.querySelectorAll('.card-body');
-    priceString.forEach(element => {       
+    priceString.forEach(element => {
         let priceRel = element.children[1].children[5].children[1].textContent;
         priceRel = spaceSupressor(priceRel);
         priceRel.slice(-1);
@@ -149,16 +170,16 @@ mainSubmit.addEventListener("click", function (e) {
 
     if (firstName == '' && lastName == '' && city == '' && address == '' && email == '') {
         firstNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
-        firstNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        firstNamestatus.textContent = "Que le texte avec l'alphabet est autorisé 🤬";
         lastNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
-        lastNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        lastNamestatus.textContent = "Que le texte avec l'alphabet est autorisé 🤬";
         citystatus.classList.add('animate__animated', 'animate__fadeInRight');
-        citystatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        citystatus.textContent = "Que le texte avec l'alphabet est autorisé 🤬";
         emailstatus.classList.add('animate__animated', 'animate__fadeInRight');
-        emailstatus.textContent = "l'adresse e-mail n'est pas formatée correctement  🤬";
+        emailstatus.textContent = "L'adresse e-mail n'est pas formatée correctement  🤬";
         addresstatus.classList.add('animate__animated', 'animate__fadeInRight');
-        addresstatus.textContent = "l'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
-      
+        addresstatus.textContent = "L'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
+
     } else {
         if (errors.length === 0) {
             let orderPrice = demo.textContent;
@@ -179,7 +200,7 @@ mainSubmit.addEventListener("click", function (e) {
                 email,
                 orders: orders,
             };
-            
+
             const body = {
                 contact,
                 products
@@ -207,7 +228,7 @@ function checkusername(input) {
     } else {
         firstNamestatus.classList.add('animate__animated', 'animate__fadeInRight');
         mainSubmit.style.display = "none";
-        firstNamestatus.textContent = "seul le texte avec l'alphabet est autorisé 🤬";
+        firstNamestatus.textContent = "Que le texte avec l'alphabet est autorisé 🤬";
         let error = "texte  only";
         errors.push(error);
 
@@ -223,7 +244,7 @@ function checkusermail(email) {
         mainSubmit.style.display = "block";
         return errors = [];
     } else {
-        emailstatus.innerHTML = "l'adresse e-mail n'est pas formatée correctement  🤬";
+        emailstatus.innerHTML = "L'adresse e-mail n'est pas formatée correctement  🤬";
         mainSubmit.style.display = "none";
         let error = "Email format only";
         errors.push(error);
@@ -239,7 +260,7 @@ function checkaddress(address) {
         mainSubmit.style.display = "block";
         return errors = [];
     } else {
-        addresstatus.innerHTML = "l'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
+        addresstatus.innerHTML = "L'adress ne peuvent pas contenir de caractères spéciaux comme '=', '<>', '?'...  🤬";
         mainSubmit.style.display = "none";
         let error = "alphanumérique uniquement";
         errors.push(error);

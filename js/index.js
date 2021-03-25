@@ -9,8 +9,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     data.forEach((teddie) => {
       displayCards(teddie);
     });
+    
     /** Enlever le itme orders dans le localstorage */
-    if(localStorage.length >=1){
+    if(dataStore >=1){
       localStorage.removeItem('orderRecap');
       localStorage.removeItem('price');
       
@@ -31,7 +32,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   
 });
 
-/**Afficher les cart de index */
+/**Afficher les carts de index */
 const displayCards = ((teddie) => {
   let cardtemp = document.getElementById('cardTemplate');
   let copyHtml = cardtemp.content.cloneNode(true);

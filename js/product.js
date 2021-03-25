@@ -39,9 +39,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
      /** création l'option couleurs */
     let colors = product.colors;
     colors.forEach(color => {
-      let option = document.createElement('option');
-      option.textContent = color;
-      option.value = color;
+      let option = document.createElement('option');    
+       option.value = color; 
+       option.textContent = color;
       copyHtml.querySelector("#options").appendChild(option);
     })
 
@@ -96,7 +96,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
           items.push(item);
           let chooseName = spaceSupressor(`${item.name}${choose}`);
           localStorage.setItem(chooseName, JSON.stringify(items));
-
 
         }
 

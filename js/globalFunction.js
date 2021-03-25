@@ -1,3 +1,4 @@
+const dataStore = localStorage.length;
 
 // AJAX GET
 async function getData(url) {
@@ -37,7 +38,6 @@ async function postData(url, data, total) {
 /* afficher le button info du panier */
 const afficheBadge = (() => {
   let badgeCart = document.querySelector('#badge');
-  let dataStore = localStorage.length;
   if (dataStore >= 1) {
     badgeCart.innerHTML = dataStore;
   }else{
@@ -46,11 +46,23 @@ const afficheBadge = (() => {
 
 })
 
-/* affiché le titre et description de l'article */
+//bouton de navigation vers le panier
+let cartLink = document.querySelector('.cartLink');
+cartLink.addEventListener('click', (e) => {
+  if (dataStore >= 1) {    
+      window.location.href = '/pages/card.html';
+    } else {
+    window.location.href = './pages/404.html';
+  }
+})
+
+
+
+/* Pour l’affichage  du titre et la description du produit */
 const afficheTitle = ((data) => {
   let titile = document.querySelector('#title');
   titile.classList.add('animate__animated', 'animate__fadeInLeft');
-  titile.innerHTML = `${data.name} <br><small class="text-muted smallText">Peluche fait main<small>`;
+  titile.innerHTML += `${data.name} <br><small class="text-muted smallText">Peluche fait main<small>`;
 })
 
 //bouton de navigation sur les petits écrans
@@ -61,18 +73,7 @@ btnCollapse.addEventListener('click', (e) => {
   navbarSupportedContent.classList.toggle('control');
 })
 
-//bouton de navigation vers le panier
-let cartLink = document.querySelector('.cartLink');
-cartLink.addEventListener('click', (e) => {
-  let storedata = localStorage.length;
-  if (storedata >= 1) {    
-      window.location.href = '/pages/card.html';    
-   
-  } else {
-    window.location.href = './pages/404.html';
 
-  }
-})
 // fonction pour enlever l'espace entre le mots
 function spaceSupressor(string) {
   return string.replace(/\s/g, "");
