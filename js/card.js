@@ -1,8 +1,5 @@
-
 const form = document.querySelector("#confirmform");
 let demo = document.getElementById("demo");
-const productsDestination = document.getElementById("destination");
-let product__warning = document.querySelector(".product__warning");
 const products = [];
 
 function getDataStore() {
@@ -14,7 +11,6 @@ function getDataStore() {
             /**creation les cartes du  panier  */
             itemsData.forEach(el => {
                 let teddiePrice = el.price * el.No;
-                teddiePrice = parseInt(teddiePrice);
                 let tempCart = document.getElementById('tempCart');
                 let keyName = spaceSupressor(el.name + el.colors);
                 let copyTemp = tempCart.content.cloneNode(true);
@@ -51,6 +47,7 @@ function getDataStore() {
                 })
                 /**button pour modifier la commande */
                 quantitybtn.addEventListener('click', ((e) => {
+                    e.preventDefault();
                     let targetCart = e.target;
                     let value = targetCart.parentNode.children[2].value;
 
@@ -63,23 +60,8 @@ function getDataStore() {
                         targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
 
                     }
-                      else {
-                        totalPrice = parseInt(floatprice / value);
-                        targetTotal.innerHTML = `${totalPrice + '.'}00 € `;
-                    }
-                    let newitem;
-                    var addToLocalStorageArray = function (name, value) {
-                         let newobjct = [] ;
-                        // Get the existing data
-                          localStorage.removeItem(name); 
-                         newobjct.push(value);
-                                              // Save back to localStorage
-                        localStorage.setItem(name, JSON.stringify(newobjct));
-
-                    };
-                    /* afficher le prix total après modification des commandes  */
-                    getPrice();
-                    newitem = {
+                   
+                    let newitem = {
                         No:value,
                         colors: el.colors,
                         imageUrl: el.imageUrl,
@@ -87,21 +69,22 @@ function getDataStore() {
                         price: el.price,
                         _id: el._id
                     };
-                    addToLocalStorageArray(`${keyName}`, newitem);
-                    
+                    /* afficher le prix total après modification des commandes  */
+                    getPrice();                   
+                    addToLocalStorageNewItem(`${keyName}`, newitem);                   
 
                 }))
 
-                /**button pour retire la commande du panier */
+                /**le bouton pour supprimer un élément du stockage local */
                 let btnRemove = document.querySelector(`#${keyName}`);
-                btnRemove.addEventListener('click', function (e) {
+                btnRemove.addEventListener('click',((e)=> {
+                    e.preventDefault();
                     if (dataStore >= 1) {
                         localStorage.removeItem(e.target.id);
                         window.location.reload();
-                    }else{
-                        window.location.href="../index.html"
                     }
                 })
+                )
 
                 /* afficher le prix total en arrivant sur la page */
                 getPrice();
@@ -270,6 +253,17 @@ function checkaddress(address) {
 
     }
 }
+
+const addToLocalStorageNewItem =((name, value) =>{
+    let newobjct = [] ;
+   // Get the existing data
+     localStorage.removeItem(name); 
+    newobjct.push(value);
+    // Save back to localStorage
+   localStorage.setItem(name, JSON.stringify(newobjct));
+
+});
+
 document.getElementById('Refresh').addEventListener('click', function (e) {
     e.preventDefault();
     let firstName = document.getElementById("firstName");

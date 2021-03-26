@@ -8,7 +8,7 @@
     <meta name="Description" content="shopping Teddeies-bear orinoco  the best e-commerce on-line">
     <meta name="author" content="Achille Michael">
     <link rel="apple-touch-icon" href="./img/logo_orinocoico.ico" />
-  <link rel="icon" href="../img/logo_orinocoico.ico" type="image/png">
+    <link rel="icon" href="../img/logo_orinocoico.ico" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>404</title>
@@ -44,7 +44,14 @@
             <a href="mailto:contact@orinoco.com" class="navtbot__link">Contact</a>
         </div>
     </footer>
-    <script src="../js/globalFunction.js"></script>
+    <script>
+        let navbarSupportedContent = document.querySelector('#navbarSupportedContent');
+        let btnCollapse = document.querySelector('#btnCollapse');
+        btnCollapse.addEventListener('click', (e) => {
+            e.preventDefault();
+            navbarSupportedContent.classList.toggle('control');
+        })
+    </script>
 </body>
 
 </html>
