@@ -50,12 +50,12 @@ const afficheBadge = (() => {
 let cartLink = document.querySelector('.cartLink');
 cartLink.addEventListener('click', (e) => {
   if (dataStore >= 1) {    
-      window.location.href = '/pages/card.html';
+      window.location.href = 'pages/card.html';
 
     }else if(window.location.pathname == '/index.html'){
-      window.location.href = './pages/404.html';
+      window.location.href = 'pages/404.html';
     } else{
-      window.location.href = './404.html';
+      window.location.href = '404.html';
     }   
 
 })
