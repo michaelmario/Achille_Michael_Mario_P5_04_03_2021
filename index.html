@@ -9,7 +9,7 @@
   <meta name="author" content="Achille Michael">
   <link rel="apple-touch-icon" href="./img/logo_orinocoico.ico" />
   <link rel="icon" href="./img/logo_orinocoico.ico" type="image/png">
-   <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/style.css" />
   <title>Ours|en peluche</title>
@@ -32,7 +32,7 @@
             <a class="nav-link" href="index.html">Accueil<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <span class="nav-link cartLink">
+            <span class="nav-link cartLinkIndex">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-cart"
                 viewBox="0 0 16 16">
                 <path
@@ -89,6 +89,18 @@
   <!-- ========== SCRIPTS ========== -->
   <script src="./js/index.js"></script>
   <script src="./js/globalFunction.js"></script>
+  <script>
+    //bouton de navigation vers le panier
+    let cartLinkIndex = document.querySelector('.cartLinkIndex');
+    cartLinkIndex.addEventListener('click', (e) => {
+      if (dataStore >= 1) {
+        window.location.href = 'pages/card.html';
+      } else {
+        window.location.href = 'pages/404.html';
+      }
+
+    })
+  </script>
 </body>
 
 </html>

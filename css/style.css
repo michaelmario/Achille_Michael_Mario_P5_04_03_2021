@@ -4,6 +4,15 @@
  .cartLink{
  cursor: pointer;
  }
+ .cartLink :hover{
+  color:#e78200;
+}
+ .cartLinkIndex{
+  cursor: pointer;
+ }
+ .cartLinkIndex :hover{
+   color:#e78200;
+ }
  .badge{
    position:absolute;
  }
