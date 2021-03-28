@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
  
 
-  /**Vérifier si l'URL correspond à l'ID*/
+  /**Vérifier si l'URL  Id correspond à l'ID du produit  passé en parametre */
   function checkUrl(product) {
     let url = window.location.search;
     const sliceId = url.split('=')[1];  

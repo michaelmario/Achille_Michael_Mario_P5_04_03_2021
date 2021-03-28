@@ -7,12 +7,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let destination = document.querySelector('.destination');
     let summeryOrderId = document.querySelector('.SummeryorderId');
     let product = document.querySelector('#products');
+    let cartLink = document.querySelector('.cartLink'); 
 
 
     let mainContainer = document.querySelector('#mainContainer');
     cartLink.style.display = 'none';
     // Redirection vers la page d'accueil si localstorage == 0
-    if (orderStore == 0) {
+    if (orderStore === 0) {
         mainContainer.innerHTML = "";
         window.location.replace("../../index.html");
     }

@@ -113,7 +113,7 @@ function getDataStore() {
 document.addEventListener('DOMContentLoaded', getDataStore);
 
 
-//obtenir tous les prix du corps de la carte, convertir en entier, mettre dans un tableau, les additionnée
+//obtenir tous les prix  total des cartes , convertir en entier, mettre dans un tableau, les additionnée
 function getPrice() {
     prices = [];
     let priceString = document.querySelectorAll('.card-body');
@@ -254,6 +254,7 @@ function checkaddress(address) {
     }
 }
 
+// get the keyName and value and  then setitem in localstorage 
 const addToLocalStorageNewItem =((name, value) =>{
     let newobjct = [] ;
    // Get the existing data
@@ -264,6 +265,7 @@ const addToLocalStorageNewItem =((name, value) =>{
 
 });
 
+//Clear input & alert in the form 
 document.getElementById('Refresh').addEventListener('click', function (e) {
     e.preventDefault();
     let firstName = document.getElementById("firstName");
